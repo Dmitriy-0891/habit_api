@@ -37,7 +37,7 @@ def read_habits(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return habits
 
 @app.delete("/habits/{habit_id}", response_model = schemas.HabitResponse)
-def delete_habit(habit_id=: int, db: Session = Depends(get_db)):
+def delete_habit(habit_id: int, db: Session = Depends(get_db)):
     """
     Удалить привычку по ID.
     """
@@ -62,7 +62,7 @@ def today_stats(db: Session = Depends(get_db)):
         models.Habit.created_at >= today_start
     ).all()
     return {
-        "date": str(date.today())
+        "date": str(date.today()),
         "count": len(habits),
         "habits": [h.name for h in habits]
     }
