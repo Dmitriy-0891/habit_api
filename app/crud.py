@@ -1,4 +1,4 @@
-from sqlalchemy import Session
+from sqlalchemy.orm import Session
 from app import models, schemas
 import requests
 from datetime import datetime
