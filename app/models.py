@@ -5,7 +5,7 @@ from datetime import datetime
 class Habit(Base):
     __tablename__ = "habits"
     
-    id = Column(Integer, primery_key=True, Index=True)
+    id = Column(Integer, primary_key=True, index=True)
     name = Column(String(200), nullable=False)
     created_at = Column(DateTime, default=datetime.now)
     quote = Column(Text, nullable=True) #Мотивирующая цитата
