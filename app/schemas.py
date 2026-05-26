@@ -5,11 +5,11 @@ from typing import Optional
 
 # Схема для создания привычки(то, что присылает клиент)
 class HabitCreate(BaseModel):
-    name: String
+    name: str
     
     
 #Схема для ответа API(то, что получает клиент)
-Class HabitResponse(BaseModel):
+class HabitResponse(BaseModel):
     id: int
     name: str
     sreated_at: datetime
