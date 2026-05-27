@@ -12,7 +12,7 @@ class HabitCreate(BaseModel):
 class HabitResponse(BaseModel):
     id: int
     name: str
-    sreated_at: datetime
+    created_at: datetime
     quote: Optional[str] = None
     
     class Config:
