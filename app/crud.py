@@ -6,10 +6,10 @@ from datetime import datetime
 def get_motivation_quote() -> str:
     """Получает цитату из внешнего API(как в CLI-версии)"""
     try:
-        response = requests.get("https://api.quotable.io/random", timeout=5, verify=False)
+        response = requests.get('https://api.quotable.io/random', timeout=5, verify=False)
         data = response.json()
         author = data.get("author", "")
-        test=data.get("content", "")
+        text=data.get("content", "")
         return f'{text} - {author}' if author else f'{text}'
     except Exception:
         return "Продолжай в том же духе!"
@@ -22,14 +22,14 @@ def get_habit(db: Session, habit_id: int):
 
 def get_habits(db: Session, skip: int = 0, limit: int = 100):
     """Получить список привычек (с пагинацией)"""
-    return db.query(models.Habit).offset(skip).limit(limit).all(0)
+    return db.query(models.Habit).offset(skip).limit(limit).all()
 
 
 def create_habit(db: Session, habit: schemas.HabitCreate):
     """Создать новую привычку (с цитатой)"""
     quote = get_motivation_quote()
     db_habit = models.Habit(
-        name = habit_name,
+        name = habit.name,
         quote = quote
     )
     db.add(db_habit)
