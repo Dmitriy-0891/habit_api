@@ -56,7 +56,7 @@ def root():
 @app.get("/stats/today/")
 def today_stats(db: Session = Depends(get_db)):
     """ Показывает привычки, добавленные сегодня (как в CLI-версии)"""
-    from datetime import datetime, datetime
+    from datetime import datetime, date
     today_start = datetime.combine(date.today(), datetime.min.time())
     habits = db.query(models.Habit).filter(
         models.Habit.created_at >= today_start
